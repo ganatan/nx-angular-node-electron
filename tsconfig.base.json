@@ -14,7 +14,21 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@angular-node-electron/catalog": ["libs/frontend/catalog/src/index.ts"],
+      "@angular-node-electron/catalog-domain": [
+        "libs/catalog-domain/src/index.ts"
+      ],
+      "@angular-node-electron/catalog-contract": [
+        "shared/catalog-contract/src/index.ts"
+      ],
+      "@angular-node-electron/catalog-application": [
+        "libs/catalog-application/src/index.ts"
+      ],
+      "@angular-node-electron/catalog-infrastructure": [
+        "libs/catalog-infrastructure/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

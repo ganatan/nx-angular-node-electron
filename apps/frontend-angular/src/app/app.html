@@ -6,6 +6,33 @@
       <li>Conversation 1</li>
       <li>Conversation 2</li>
     </ul>
+    <lib-catalog></lib-catalog>
+
+    <div class="mt-3">
+      <div class="d-flex justify-content-between align-items-center">
+        <h6 class="mb-0">Catalogue (backend)</h6>
+        <div *ngIf="loadingTitles" class="spinner-border spinner-border-sm" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+
+      <div *ngIf="backendError" class="alert alert-danger mt-2">
+        {{ backendError }}
+      </div>
+
+      <ul *ngIf="titles.length" class="list-unstyled small mt-2 mb-2">
+        <li *ngFor="let t of titles" class="d-flex justify-content-between">
+          <span>{{ t.name }}</span>
+          <span class="text-muted">{{ t.year }}</span>
+        </li>
+      </ul>
+
+      <div *ngIf="!titles.length && !loadingTitles && !backendError" class="text-muted small mt-2">
+        Aucun titre chargé pour l'instant.
+      </div>
+    </div>
+
+    <button class="btn btn-info w-100 mt-3" (click)="testBackend()">Tester le backend</button>
     <button class="btn btn-success w-100 mt-3" (click)="testWS()">Tester WebSocket</button>
     <div *ngIf="notification" class="alert alert-secondary mt-3 small">
       {{ notification }}

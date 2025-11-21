@@ -1,13 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+
+import { Catalog } from '@angular-node-electron/catalog';
+
+import { HttpClient } from '@angular/common/http'
+
+import { Title } from '@angular-node-electron/catalog-contract'
+
 
 @Component({
   imports: [
     RouterModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    Catalog
   ],
   selector: 'app-root',
   templateUrl: './app.html',
@@ -15,6 +23,8 @@ import { CommonModule } from '@angular/common';
 })
 export class App {
   protected title = 'frontend-angular';
+
+  private readonly http = inject(HttpClient)
 
   // useMock = environment.useMock;
   useMock = false;
@@ -24,6 +34,10 @@ export class App {
   connected = false;
   wsStatus = 'Déconnecté';
   notification = '';
+
+  titles: Title[] = []
+  loadingTitles = false
+  backendError = ''
 
   ngOnInit() {
     if (!this.useMock) {
@@ -91,6 +105,22 @@ export class App {
         container.scrollTop = container.scrollHeight;
       }
     }, 0);
+  }
+
+  testBackend() {
+    this.loadingTitles = true
+    this.backendError = ''
+    // this.http.get<Title[]>('/api/catalog/titles').subscribe({
+    this.http.get<Title[]>('http://localhost:3333/api/catalog/titles').subscribe({
+      next: data => {
+        this.titles = data
+        this.loadingTitles = false
+      },
+      error: () => {
+        this.backendError = 'Erreur lors de l’appel backend'
+        this.loadingTitles = false
+      }
+    })
   }
 
 }

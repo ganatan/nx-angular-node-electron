@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-const excludedDirs: string[] = ['.angular','.git','coverage', 'dist', 'logs', 'node_modules', '.nx'];
+const excludedDirs: string[] = ['.angular', '.git', 'coverage', 'dist', 'logs', 'node_modules', '.nx', 'tmp'];
 
 function getDirectoryStructure(dirPath: string, level = 0): string {
   let structure = '';
