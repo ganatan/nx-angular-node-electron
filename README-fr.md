@@ -107,6 +107,26 @@ nx build electron
 npx electron-builder
 ```
 
+---
+
+## Exécuter PowerShell en mode Administrateur (Windows)
+
+Certaines opérations (symlinks, build Electron, accès système) nécessitent un terminal avec élévation de privilèges.  
+Pour ouvrir PowerShell avec les droits administrateur :
+
+1. Appuyer sur **Win**
+2. Taper **powershell**
+3. Faire un clic droit sur **Windows PowerShell**
+4. Sélectionner **Exécuter en tant qu’administrateur**
+
+Puis exécuter :
+
+```bash
+npx electron-builder
+```
+
+---
+
 ## 🔧 Scripts Nx
 
 | Commande | Description |

@@ -81,6 +81,24 @@ nx build electron
 npx electron-builder
 ```
 
+## Running PowerShell as Administrator (Windows)
+
+Some operations (symlinks, Electron build, system-level access) require an elevated terminal.  
+To open PowerShell with administrator privileges:
+
+1. Press **Win**
+2. Type **powershell**
+3. Right-click **Windows PowerShell**
+4. Select **Run as administrator**
+
+Then run:
+
+```bash
+npx electron-builder
+```
+
+---
+
 ## Nx Commands
 | Command | Description |
 |--------|-------------|
