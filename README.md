@@ -1,5 +1,5 @@
 
-# Nx Angular — Node — Electron Starter (EN)
+# Nx Angular — Node — Electron Starter
 
 <img src="./ui/ganatan-about-github.png" align="right" width="140" height="140" alt="ganatan logo">
 
