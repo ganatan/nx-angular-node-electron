@@ -13,40 +13,56 @@
         "platform": "node",
         "outputPath": "dist/apps/backend-typescript",
         "format": ["cjs"],
-        "bundle": true,
-        "thirdParty": true,
+        "bundle": false,
         "main": "apps/backend-typescript/src/main.ts",
         "tsConfig": "apps/backend-typescript/tsconfig.app.json",
         "assets": ["apps/backend-typescript/src/assets"],
-        "generatePackageJson": false,
+        "generatePackageJson": true,
         "esbuildOptions": {
           "sourcemap": true,
           "outExtension": {
             ".js": ".js"
-          },
-          "minify": false,
-          "target": "node18",
-          "platform": "node"
-        },
-        "external": []
+          }
+        }
       },
       "configurations": {
-        "development": {
-          "esbuildOptions": {
-            "sourcemap": true,
-            "minify": false
-          }
-        },
+        "development": {},
         "production": {
           "esbuildOptions": {
             "sourcemap": false,
-            "minify": true,
             "outExtension": {
               ".js": ".js"
             }
           }
         }
       }
+    },
+    "prune-lockfile": {
+      "dependsOn": ["build"],
+      "cache": true,
+      "executor": "@nx/js:prune-lockfile",
+      "outputs": [
+        "{workspaceRoot}/dist/apps/backend-typescript/package.json",
+        "{workspaceRoot}/dist/apps/backend-typescript/package-lock.json"
+      ],
+      "options": {
+        "buildTarget": "build"
+      }
+    },
+    "copy-workspace-modules": {
+      "dependsOn": ["build"],
+      "cache": true,
+      "outputs": [
+        "{workspaceRoot}/dist/apps/backend-typescript/workspace_modules"
+      ],
+      "executor": "@nx/js:copy-workspace-modules",
+      "options": {
+        "buildTarget": "build"
+      }
+    },
+    "prune": {
+      "dependsOn": ["prune-lockfile", "copy-workspace-modules"],
+      "executor": "nx:noop"
     },
     "serve": {
       "continuous": true,

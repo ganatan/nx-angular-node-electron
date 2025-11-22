@@ -7,24 +7,6 @@ const { WebSocketServer } = require('ws')
 
 require('dotenv').config()
 
-function getRootPath() {
-  return path.join(__dirname, '..', '..', '..')
-}
-
-function startBackend() {
-  const rootPath = getRootPath()
-  const backendMainPath = path.join(
-    rootPath,
-    'dist',
-    'apps',
-    'backend-typescript',
-    'main.js'
-  )
-
-  console.log('[MAIN] require backend:', backendMainPath)
-  require(backendMainPath)
-}
-
 function startWebSocketServer() {
   console.log('WebSocketServer sur le port 8080')
   const wss = new WebSocketServer({ port: 8080 })
@@ -46,8 +28,8 @@ function createWindow() {
   })
 
   console.log('00000000001:' + process.env.MODE)
-  // let html = true;
-  let html = (process.env.MODE === 'html');
+  let html = true;
+  // let html = (process.env.MODE === 'html');
   if (html) {
     const indexHtmlPath = path.join(
       __dirname,
@@ -80,7 +62,6 @@ function createWindow() {
 }
 
 app.whenReady().then(() => {
-  startBackend();
-  startWebSocketServer();
-  createWindow();
+  startWebSocketServer()
+  createWindow()
 })
