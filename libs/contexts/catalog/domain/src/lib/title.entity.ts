@@ -1,4 +1,4 @@
-export class TitleEntity {
+export class Title {
   constructor(
     public readonly id: string,
     public name: string,

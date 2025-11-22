@@ -1,5 +1,5 @@
 import {
-  MediaItemEntity,
+  MediaItem,
   MediaItemId,
   MediaSupportType,
   MediaStatus,
@@ -7,24 +7,24 @@ import {
 } from '@angular-node-electron/inventory-domain';
 
 export class InMemoryMediaItemRepository implements MediaItemRepository {
-  private readonly items: MediaItemEntity[];
+  private readonly items: MediaItem[];
 
   constructor() {
     this.items = [
-      new MediaItemEntity(new MediaItemId('1'), 'Alien', 'DVD', 'AVAILABLE'),
-      new MediaItemEntity(
+      new MediaItem(new MediaItemId('1'), 'Alien', 'DVD', 'AVAILABLE'),
+      new MediaItem(
         new MediaItemId('2'),
         'Blade Runner',
         'BLURAY',
         'RESERVED'
       ),
-      new MediaItemEntity(
+      new MediaItem(
         new MediaItemId('3'),
         'Gladiator',
         'BLURAY_4K',
         'SOLD'
       ),
-      new MediaItemEntity(
+      new MediaItem(
         new MediaItemId('4'),
         'Kingdom of Heaven',
         'BLURAY_4K',
@@ -33,7 +33,7 @@ export class InMemoryMediaItemRepository implements MediaItemRepository {
     ];
   }
 
-  async findAll(): Promise<MediaItemEntity[]> {
+  async findAll(): Promise<MediaItem[]> {
     return this.items;
   }
 }

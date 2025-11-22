@@ -7,7 +7,7 @@ import { Catalog } from '@angular-node-electron/catalog';
 
 import { HttpClient } from '@angular/common/http'
 
-import { Title } from '@angular-node-electron/catalog-contract'
+import { TitleDto } from '@angular-node-electron/catalog-contract'
 import { MediaItemDto } from '@angular-node-electron/inventory-contract';
 
 @Component({
@@ -35,7 +35,7 @@ export class App implements OnInit {
   wsStatus = 'Déconnecté';
   notification = '';
 
-  titles: Title[] = []
+  titles: TitleDto[] = []
   mediaItems: MediaItemDto[] = []
 
   loadingTitles = false
@@ -113,7 +113,7 @@ export class App implements OnInit {
   testBackend() {
     this.loadingTitles = true
     this.backendError = ''
-    this.http.get<Title[]>('http://localhost:3000/api/catalog/titles').subscribe({
+    this.http.get<TitleDto[]>('http://localhost:3000/api/catalog/titles').subscribe({
       next: data => {
         this.titles = data
         this.loadingTitles = false

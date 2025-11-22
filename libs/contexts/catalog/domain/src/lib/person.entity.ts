@@ -1,4 +1,4 @@
-export class PersonEntity {
+export class Person {
   constructor(
     public readonly id: string,
     public firstname: string,

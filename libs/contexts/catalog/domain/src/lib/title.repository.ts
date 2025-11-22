@@ -1,5 +1,5 @@
-import { TitleEntity } from './title.entity';
+import { Title } from './title.entity';
 
 export interface TitleRepository {
-  findAll(): Promise<TitleEntity[]>;
+  findAll(): Promise<Title[]>;
 }

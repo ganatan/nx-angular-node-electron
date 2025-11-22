@@ -6,13 +6,13 @@ import { InMemoryTitleRepository } from '@angular-node-electron/catalog-infrastr
 
 import { GetAllMediaItemsUseCase } from '@angular-node-electron/inventory-application'
 import { InMemoryMediaItemRepository } from '@angular-node-electron/inventory-infrastructure'
-import { MediaItemEntity } from '@angular-node-electron/inventory-domain'
+import { MediaItem } from '@angular-node-electron/inventory-domain'
 import { MediaItemDto } from '@angular-node-electron/inventory-contract'
 
 const mediaRepo = new InMemoryMediaItemRepository()
 const getAllMediaItems = new GetAllMediaItemsUseCase(mediaRepo)
 
-function mapMediaItemToDto(item: MediaItemEntity): MediaItemDto {
+function mapMediaItemToDto(item: MediaItem): MediaItemDto {
   return {
     id: item.id.value,
     titleId: item.titleId,

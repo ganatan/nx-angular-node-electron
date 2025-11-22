@@ -14,7 +14,7 @@ export class MediaItemId {
   }
 }
 
-export class MediaItemEntity {
+export class MediaItem {
   constructor(
     readonly id: MediaItemId,
     readonly titleId: string,
@@ -22,7 +22,7 @@ export class MediaItemEntity {
     readonly status: MediaStatus
   ) {}
 
-  withStatus(status: MediaStatus): MediaItemEntity {
-    return new MediaItemEntity(this.id, this.titleId, this.supportType, status);
+  withStatus(status: MediaStatus): MediaItem {
+    return new MediaItem(this.id, this.titleId, this.supportType, status);
   }
 }
