@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express'
 import cors from 'cors'
+
 import { GetAllTitlesUseCase } from '@angular-node-electron/catalog-application'
 import { InMemoryTitleRepository } from '@angular-node-electron/catalog-infrastructure'
 

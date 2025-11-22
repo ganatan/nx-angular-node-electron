@@ -17,28 +17,28 @@
     "paths": {
       "@angular-node-electron/catalog": ["libs/frontend/catalog/src/index.ts"],
       "@angular-node-electron/catalog-domain": [
-        "libs/catalog-domain/src/index.ts"
+        "libs/contexts/catalog/domain/src/index.ts"
       ],
       "@angular-node-electron/catalog-contract": [
-        "shared/catalog-contract/src/index.ts"
+        "libs/contexts/catalog/contract/src/index.ts"
       ],
       "@angular-node-electron/catalog-application": [
-        "libs/catalog-application/src/index.ts"
+        "libs/contexts/catalog/application/src/index.ts"
       ],
       "@angular-node-electron/catalog-infrastructure": [
-        "libs/catalog-infrastructure/src/index.ts"
+        "libs/contexts/catalog/infrastructure/src/index.ts"
       ],
       "@angular-node-electron/inventory-domain": [
-        "libs/inventory-domain/src/index.ts"
+        "libs/contexts/inventory/domain/src/index.ts"
       ],
       "@angular-node-electron/inventory-contract": [
-        "shared/inventory-contract/src/index.ts"
+        "libs/contexts/inventory/contract/src/index.ts"
       ],
       "@angular-node-electron/inventory-application": [
-        "libs/inventory-application/src/index.ts"
+        "libs/contexts/inventory/application/src/index.ts"
       ],
       "@angular-node-electron/inventory-infrastructure": [
-        "libs/inventory-infrastructure/src/index.ts"
+        "libs/contexts/inventory/infrastructure/src/index.ts"
       ]
     }
   },

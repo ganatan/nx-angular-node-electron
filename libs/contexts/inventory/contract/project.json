@@ -1,0 +1,27 @@
+{
+  "name": "inventory-contract",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/contexts/inventory/contract/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/contexts/inventory/contract",
+        "tsConfig": "libs/contexts/inventory/contract/tsconfig.lib.json",
+        "packageJson": "libs/contexts/inventory/contract/package.json",
+        "main": "libs/contexts/inventory/contract/src/index.ts",
+        "assets": ["libs/contexts/inventory/contract/*.md"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/contexts/inventory/contract/jest.config.ts"
+      }
+    }
+  }
+}

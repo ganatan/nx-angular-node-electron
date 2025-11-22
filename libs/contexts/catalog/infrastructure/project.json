@@ -1,0 +1,27 @@
+{
+  "name": "catalog-infrastructure",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/contexts/catalog/infrastructure/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/contexts/catalog/infrastructure",
+        "tsConfig": "libs/contexts/catalog/infrastructure/tsconfig.lib.json",
+        "packageJson": "libs/contexts/catalog/infrastructure/package.json",
+        "main": "libs/contexts/catalog/infrastructure/src/index.ts",
+        "assets": ["libs/contexts/catalog/infrastructure/*.md"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/contexts/catalog/infrastructure/jest.config.ts"
+      }
+    }
+  }
+}
