@@ -27,6 +27,18 @@
       ],
       "@angular-node-electron/catalog-infrastructure": [
         "libs/catalog-infrastructure/src/index.ts"
+      ],
+      "@angular-node-electron/inventory-domain": [
+        "libs/inventory-domain/src/index.ts"
+      ],
+      "@angular-node-electron/inventory-contract": [
+        "shared/inventory-contract/src/index.ts"
+      ],
+      "@angular-node-electron/inventory-application": [
+        "libs/inventory-application/src/index.ts"
+      ],
+      "@angular-node-electron/inventory-infrastructure": [
+        "libs/inventory-infrastructure/src/index.ts"
       ]
     }
   },

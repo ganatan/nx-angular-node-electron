@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core'
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -8,6 +8,7 @@ import { Catalog } from '@angular-node-electron/catalog';
 import { HttpClient } from '@angular/common/http'
 
 import { Title } from '@angular-node-electron/catalog-contract'
+import { MediaItemDto } from '@angular-node-electron/inventory-contract';
 
 @Component({
   imports: [
@@ -20,7 +21,7 @@ import { Title } from '@angular-node-electron/catalog-contract'
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
-export class App {
+export class App implements OnInit {
   protected title = 'frontend-angular';
 
   private readonly http = inject(HttpClient)
@@ -35,7 +36,10 @@ export class App {
   notification = '';
 
   titles: Title[] = []
+  mediaItems: MediaItemDto[] = []
+
   loadingTitles = false
+  loadingMediaItems = false
   backendError = ''
 
   ngOnInit() {
@@ -117,6 +121,18 @@ export class App {
       error: () => {
         this.backendError = 'Erreur lors de l’appel backend'
         this.loadingTitles = false
+      }
+    })
+    this.loadingMediaItems = true
+    this.backendError = ''
+    this.http.get<MediaItemDto[]>('http://localhost:3000/api/inventory/items').subscribe({
+      next: data => {
+        this.mediaItems = data
+        this.loadingMediaItems = false
+      },
+      error: () => {
+        this.backendError = 'Erreur lors de l’appel backend'
+        this.loadingMediaItems = false
       }
     })
   }
