@@ -111,7 +111,7 @@ export class App {
     this.loadingTitles = true
     this.backendError = ''
     // this.http.get<Title[]>('/api/catalog/titles').subscribe({
-    this.http.get<Title[]>('http://localhost:3333/api/catalog/titles').subscribe({
+    this.http.get<Title[]>('http://localhost:3000/api/catalog/titles').subscribe({
       next: data => {
         this.titles = data
         this.loadingTitles = false

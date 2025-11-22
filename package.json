@@ -21,6 +21,7 @@
     "test:backend": "nx test backend-typescript",
     "build:backend": "nx build backend-typescript",
     "e2e:backend": "nx e2e backend-typescript-e2e",
+    "server:backend": "node dist/apps/backend-typescript/main.js",
     "dev:electron": "electron apps/electron/src/main.js",
     "start:electron": "electron apps/electron/src/main.js",
     "lint:electron": "nx lint electron",
@@ -39,6 +40,7 @@
     "files": [
       "apps/electron/**/*",
       "dist/apps/frontend-angular/browser/**/*",
+      "dist/apps/backend-typescript/**/*",
       "package.json",
       "!**/node_modules/**",
       "node_modules/ws/**/*",

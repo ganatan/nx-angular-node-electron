@@ -4,7 +4,7 @@ import { GetAllTitlesUseCase } from '@angular-node-electron/catalog-application'
 import { InMemoryTitleRepository } from '@angular-node-electron/catalog-infrastructure'
 
 const app = express()
-const port = process.env.PORT ? Number(process.env.PORT) : 3333
+const port = process.env.PORT ? Number(process.env.PORT) : 3000
 
 app.use(cors({
   origin: 'http://localhost:4200'
@@ -12,6 +12,18 @@ app.use(cors({
 
 const repo = new InMemoryTitleRepository()
 const getAllTitles = new GetAllTitlesUseCase(repo)
+
+app.get('/', (req: Request, res: Response) => {
+  res.json({
+    name: 'angular-node-electron-backend',
+    version: '1.0.0',
+    date: '2025-11-22 07-31',
+    status: 'running',
+    endpoints: {
+      titles: '/api/catalog/titles'
+    }
+  })
+})
 
 app.get('/api/catalog/titles', async (req: Request, res: Response) => {
   const data = await getAllTitles.execute()
