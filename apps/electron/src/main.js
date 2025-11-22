@@ -46,8 +46,8 @@ function createWindow() {
   })
 
   console.log('00000000001:' + process.env.MODE)
-  // let html = true;
-  let html = (process.env.MODE === 'html');
+  // const html = true;
+  const html = (process.env.MODE === 'html');
   if (html) {
     const indexHtmlPath = path.join(
       __dirname,

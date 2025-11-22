@@ -1,14 +1,12 @@
 {
   "name": "@angular-node-electron/source",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "license": "MIT",
   "description": "Angular + Node + Electron demo",
   "author": "ganatan",
   "scripts": {
-    "start:catalog": "nx serve catalog",
     "lint:catalog": "nx lint catalog",
     "test:catalog": "nx test catalog",
-    "build:catalog": "nx build catalog --base-href ./",
     "dev:frontend": "nx serve frontend-angular",
     "start:frontend": "nx serve frontend-angular",
     "lint:frontend": "nx lint frontend-angular",
