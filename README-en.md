@@ -207,6 +207,9 @@ Tests :
 
 ### Electron --- Process Main CJS
 
+    nx build frontend-angular
+    nx build backend-typescript
+
 Serve :
 
     npx electron apps/electron/src/main.js
