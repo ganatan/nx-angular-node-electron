@@ -245,15 +245,6 @@ Serve :
 
     nx serve electron
 
-## 🧪 Tests
-
-    nx test <app>
-    nx e2e <app>
-
-## ⚙️ Développement
-
-    nx run-many -t serve -p frontend-angular backend-typescript electron
-
 ## 🏗️ Build & Packaging
 
     nx build frontend-angular
