@@ -42,6 +42,7 @@ DEVTOOLS_ENABLED=false
   `BACKEND_ENABLED=true`                    Electron lance le backend TypeScript
 
   `DEVTOOLS_ENABLED=true`                   DevTools ouverts (mode development)
+  
   ---------------------------------------------------------------------------------------------
 
 # 3. Tester Electron en mode HTML mock
