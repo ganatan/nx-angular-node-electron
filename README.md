@@ -45,8 +45,8 @@ DEVTOOLS_ENABLED=false
 
   `BACKEND_ENABLED=true`                          Electron lance le backend TypeScript
 
-  `DEVTOOLS_ENABLED=true`                         DevTools ouverts (uniquement en
-                                                  `NODE_ENV=development`)
+  `DEVTOOLS_ENABLED=true`                         DevTools ouverts
+
   ---------------------------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------
