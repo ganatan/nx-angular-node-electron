@@ -212,8 +212,21 @@ Monorepo combinant : - Desktop : Electron (CommonJS)\
     │   ├── electron-e2e/
     │   ├── frontend-angular/
     │   └── frontend-angular-e2e/
-    ├── tools/scripts/generate-project-structure.ts
-    ├── mock/
+    ├── libs/
+    │   └── contexts/
+    │       ├── catalog/
+    │       │   ├── application/
+    │       │   ├── contract/
+    │       │   ├── domain/
+    │       │   └── infrastructure/
+    │       └── inventory/
+    │           ├── application/
+    │           ├── contract/
+    │           ├── domain/
+    │           └── infrastructure/
+    ├── tools/
+    │   └── scripts/
+    │       └── generate-project-structure.ts
     └── README.md
 
 ## 🧩 Applications
