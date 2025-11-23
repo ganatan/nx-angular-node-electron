@@ -207,7 +207,7 @@ Tests :
 
 ### Electron --- Process Main CJS
 
-    nx build frontend-angular
+    nx build frontend-angular --base-href ./
     nx build backend-typescript
 
 Serve :
@@ -217,7 +217,7 @@ Serve :
 
 ## 🏗️ Build & Packaging
 
-    nx build frontend-angular
+    nx build frontend-angular --base-href ./    
     nx build backend-typescript
     npx electron-builder
 
