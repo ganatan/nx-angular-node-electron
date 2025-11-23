@@ -10,7 +10,9 @@
 -   **Monorepo Nx** : trois apps séparées (frontend, backend, electron)
 -   **Architecture DDD** : contexts métier isolés (libs **domain**,
     **application**, **infrastructure**, **contract**)
-- **Tooling** : ESLint pour la qualité de code, esbuild pour le build Angular, Playwright pour les tests e2e      
+- **Tooling** : ESLint pour la qualité de code, esbuild pour le build Angular, Playwright pour les tests e2e
+- **Scripts** : `generate:structure` (via ts-node) pour générer automatiquement l’arborescence du projet  
+
 
 ---
 
@@ -215,6 +217,16 @@ Monorepo combinant : - Desktop : Electron (CommonJS)\
     └── README.md
 
 ## 🧩 Applications
+
+
+### Générer l’arborescence du projet
+
+Ce script génère automatiquement la structure du workspace Nx.
+
+```bash
+npm run generate:structure
+```
+
 
 ### Frontend --- Angular 20
 

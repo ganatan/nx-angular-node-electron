@@ -11,6 +11,7 @@
 -   **DDD Architecture**: isolated business contexts (libs **domain**,
     **application**, **infrastructure**, **contract**)
 - **Tooling**: ESLint for code quality, esbuild for Angular builds, Playwright for end-to-end testing  
+- **Scripts**: `generate:structure` (via ts-node) to automatically build and update the project directory tree  
 
 
 ---
