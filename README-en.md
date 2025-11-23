@@ -38,14 +38,15 @@ DEVTOOLS_ENABLED=false
 
 ### Meaning
 
-`FRONTEND_ENABLED=true` --- Electron loads Angular\
-(`dist/apps/frontend-angular/browser/index.html`)
+  `FRONTEND_ENABLED=true`                         Electron loads Angular
+                                                  (`dist/apps/frontend-angular/browser/index.html`)
 
-`FRONTEND_ENABLED=false` --- Electron loads the HTML mock\
-(`apps/electron/src/renderer/index.html`)
+  `FRONTEND_ENABLED=false`                        Electron loads the HTML mock
+                                                  (`apps/electron/src/renderer/index.html`)
 
-`BACKEND_ENABLED=true` --- Electron launches the TypeScript backend\
-`DEVTOOLS_ENABLED=true` --- DevTools enabled
+  `BACKEND_ENABLED=true`                          Electron launches the TypeScript backend
+
+  `DEVTOOLS_ENABLED=true`                         DevTools enabled
 
 ------------------------------------------------------------------------
 
