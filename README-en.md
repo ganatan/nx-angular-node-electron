@@ -2,6 +2,24 @@
 
 <img src="./ui/ganatan-about-github.png" align="right" width="140" height="140" alt="ganatan logo">
 
+# Project Architecture
+
+-   **Frontend Angular**: standalone or embedded inside Electron
+-   **Backend Node.js**: standalone REST API or launched by Electron
+-   **Electron**: desktop shell assembling frontend + backend
+-   **Nx monorepo**: three separate apps (frontend, backend, electron)
+-   **DDD Architecture**: isolated business contexts (libs **domain**,
+    **application**, **infrastructure**, **contract**)
+- **Tooling**: ESLint for code quality, esbuild for Angular builds, Playwright for end-to-end testing  
+- **Scripts**: `generate:structure` (via ts-node) to automatically build and update the project directory tree  
+
+
+---
+
+**👉 Version française disponible ici** : [Français](./README.md)
+
+---
+
 # Structure
 
     nx-angular-node-electron/
@@ -28,23 +46,6 @@
     │   └── scripts/
     │       └── generate-project-structure.ts
     └── README.md
-
-# Project Architecture
-
--   **Frontend Angular**: standalone or embedded inside Electron
--   **Backend Node.js**: standalone REST API or launched by Electron
--   **Electron**: desktop shell assembling frontend + backend
--   **Nx monorepo**: three separate apps (frontend, backend, electron)
--   **DDD Architecture**: isolated business contexts (libs **domain**,
-    **application**, **infrastructure**, **contract**)
-- **Tooling**: ESLint for code quality, esbuild for Angular builds, Playwright for end-to-end testing  
-- **Scripts**: `generate:structure` (via ts-node) to automatically build and update the project directory tree  
-
-
----
-
-**👉 Version française disponible ici** : [Français](./README.md)
-
 ---
 
 # 1. Installation
