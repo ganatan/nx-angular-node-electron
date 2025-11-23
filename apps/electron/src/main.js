@@ -80,7 +80,10 @@ function createWindow() {
 }
 
 app.whenReady().then(() => {
-  startBackend();
+  const html = (process.env.MODE === 'html');
+  if (!html) {
+    startBackend();
+  }
   startWebSocketServer();
   createWindow();
 })
