@@ -2,13 +2,13 @@
 
 <img src="./ui/ganatan-about-github.png" align="right" width="140" height="140" alt="ganatan logo">
 
-## Objectifs du projet
+# Architecture du projet
 
--   Frontend Angular 20 intégré dans une app Desktop Electron
--   Backend Node.js (TypeScript) exposant une API REST
--   Monorepo Nx
--   Build Angular + Backend + Electron
--   Tests, lint, e2e, packaging final
+- Le **frontend Angular** peut fonctionner de manière autonome dans le navigateur ou être embarqué dans Electron.
+- Le **backend Node.js** peut être lancé seul en API REST ou intégré au runtime Electron.
+- Electron joue le rôle de **shell desktop** capable d’assembler frontend + backend en une application distribuable.
+- Le monorepo Nx structure clairement trois applications : **frontend**, **backend**, **electron**.
+- Build, tests, lint, e2e et packaging sont **indépendants** et peuvent être combinés selon les besoins.
 
 ------------------------------------------------------------------------
 
