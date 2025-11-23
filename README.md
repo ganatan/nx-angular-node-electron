@@ -32,12 +32,12 @@
     │   └── frontend-angular-e2e/
     ├── libs/
     │   └── contexts/
-    │       ├── catalog/            ← Domaine "Catalog" : films, séries, titres, réalisateurs
+    │       ├── catalog/         ← Domaine "Catalog" : films, séries, titres, réalisateurs
     │       │   ├── application/
     │       │   ├── contract/
     │       │   ├── domain/
     │       │   └── infrastructure/
-    │       └── inventory/        ← Domaine "Inventory" : stock physique (DVD, Blu-ray, media items)
+    │       └── inventory/       ← Domaine "Inventory" : stock physique (DVD, Blu-ray, media items)
     │           ├── application/
     │           ├── contract/
     │           ├── domain/
