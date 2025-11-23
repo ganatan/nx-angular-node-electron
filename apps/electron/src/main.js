@@ -5,10 +5,9 @@ const path = require('path')
 const { WebSocketServer } = require('ws')
 require('dotenv').config()
 
-const FRONTEND_ENABLED = process.env.FRONTEND_ENABLED === 'true'
-const BACKEND_ENABLED = process.env.BACKEND_ENABLED === 'true'
+const FRONTEND_ENABLED = process.env.FRONTEND_ENABLED !== 'false'
+const BACKEND_ENABLED = process.env.BACKEND_ENABLED !== 'false'
 const DEVTOOLS_ENABLED = process.env.DEVTOOLS_ENABLED === 'true'
-
 function startBackend() {
   if (!BACKEND_ENABLED) {
     return
