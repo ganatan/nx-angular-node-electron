@@ -12,6 +12,8 @@
 -   **Architecture DDD** : contexts métier isolés (libs **domain**,
     **application**, **infrastructure**, **contract**)
 
+------------------------------------------------------------------------
+
 # 1. Installation
 
 ``` bash
@@ -19,6 +21,8 @@ git clone https://github.com/ganatan/nx-angular-node-electron.git
 cd nx-angular-node-electron
 npm install
 ```
+
+------------------------------------------------------------------------
 
 # 2. Fichier de Configuration (.env) par défaut
 
@@ -30,27 +34,33 @@ DEVTOOLS_ENABLED=false
 
 ### Signification
 
-  ---------------------------------------------------------------------------------------------
-  Variable                                  Effet
-  ----------------------------------------- ---------------------------------------------------
-  `FRONTEND_ENABLED=true`                   Electron charge Angular
-                                            (`dist/apps/frontend-angular/browser/index.html`)
+  ---------------------------------------------------------------------------------------------------
+  Variable                                        Description
+  ----------------------------------------------- ---------------------------------------------------
+  `FRONTEND_ENABLED=true`                         Electron charge Angular
+                                                  (`dist/apps/frontend-angular/browser/index.html`)
 
-  `FRONTEND_ENABLED=false`                  Electron charge le mock HTML
-                                            (`apps/electron/src/renderer/index.html`)
+  `FRONTEND_ENABLED=false`                        Electron charge le mock HTML
+                                                  (`apps/electron/src/renderer/index.html`)
 
-  `BACKEND_ENABLED=true`                    Electron lance le backend TypeScript
+  `BACKEND_ENABLED=true`                          Electron lance le backend TypeScript
 
-  `DEVTOOLS_ENABLED=true`                   DevTools ouverts (mode development)
-  
-  ---------------------------------------------------------------------------------------------
+  `DEVTOOLS_ENABLED=true`                         DevTools ouverts (uniquement en
+                                                  `NODE_ENV=development`)
+  ---------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------
 
 # 3. Tester Electron en mode HTML mock
+
+Placer :
 
 ``` env
 FRONTEND_ENABLED=false
 BACKEND_ENABLED=false
 ```
+
+Lancer :
 
 ``` bash
 npm run start:electron
@@ -58,18 +68,28 @@ npm run start:electron
 
 Electron démarre avec le mock HTML.
 
+------------------------------------------------------------------------
+
 # 4. Tester le frontend Angular (navigateur)
+
+Placer :
 
 ``` env
 FRONTEND_ENABLED=true
 BACKEND_ENABLED=false
 ```
 
+Démarrer Angular :
+
 ``` bash
 npm run start:frontend
 ```
 
-http://localhost:4200
+Ouvrir :
+
+    http://localhost:4200
+
+------------------------------------------------------------------------
 
 # 5. Builder le frontend Angular pour Electron
 
@@ -77,17 +97,21 @@ http://localhost:4200
 npm run build:frontend
 ```
 
-Build généré dans :
+Le build est généré dans :
 
     dist/apps/frontend-angular/browser/
 
-Puis :
+Tester dans Electron :
 
 ``` bash
 npm run start:electron
 ```
 
+------------------------------------------------------------------------
+
 # 6. Tester le backend Node/TypeScript
+
+Placer :
 
 ``` env
 FRONTEND_ENABLED=true
@@ -103,6 +127,8 @@ Endpoints :
     http://localhost:3000/api/catalog/titles
     http://localhost:3000/api/inventory/items
 
+------------------------------------------------------------------------
+
 # 7. Tester Angular + Backend (mode dev)
 
 Backend :
@@ -117,34 +143,65 @@ Frontend :
 npm run start:frontend
 ```
 
+Angular appelle l'API backend en local.
+
+------------------------------------------------------------------------
+
 # 8. Builder le backend
 
 ``` bash
 npm run build:backend
 ```
 
-Généré dans :
+Build généré dans :
 
     dist/apps/backend-typescript/
 
+Tester dans Electron :
+
+``` bash
+npm run start:electron
+```
+
+------------------------------------------------------------------------
+
 # 9. Build final : Packaging Electron
+
+Builder Angular :
 
 ``` bash
 npm run build:frontend
+```
+
+Builder backend :
+
+``` bash
 npm run build:backend
+```
+
+Builder Electron :
+
+``` bash
 npm run build:electron
 ```
 
-Executable :
+Exécutable généré :
 
     dist/apps/electron/win-unpacked/GanatanElectronApp.exe
 
-# 🧱 Vue d'ensemble
+L'application charge Angular dans Electron et utilise l'API backend
+locale.
 
-Monorepo combinant : - Electron (CJS) - Angular 20 - Node TypeScript -
-Nx
+------------------------------------------------------------------------
 
-# 🧬 Structure du projet
+## 🧱 Vue d'ensemble
+
+Monorepo combinant : - Desktop : Electron (CommonJS)\
+- Web : Angular 20\
+- API locale : Node TypeScript\
+- Orchestration Nx
+
+## 🧬 Structure du projet
 
     nx-angular-node-electron/
     ├── apps/
@@ -158,49 +215,73 @@ Nx
     ├── mock/
     └── README.md
 
-# 🧩 Applications
+## 🧩 Applications
 
 ### Frontend --- Angular 20
 
+Serve :
+
     nx serve frontend-angular
+
+Tests :
+
     nx test frontend-angular
     nx e2e frontend-angular-e2e
 
 ### Backend --- Node TypeScript
 
+Serve :
+
     nx serve backend-typescript
+
+Tests :
+
     nx test backend-typescript
     nx e2e backend-typescript-e2e
 
 ### Electron --- Process Main CJS
 
+Serve :
+
     nx serve electron
 
-# 🧪 Tests
+## 🧪 Tests
 
     nx test <app>
     nx e2e <app>
 
-# ⚙️ Développement
+## ⚙️ Développement
 
     nx run-many -t serve -p frontend-angular backend-typescript electron
 
-# 🏗️ Build & Packaging
+## 🏗️ Build & Packaging
 
     nx build frontend-angular
     nx build backend-typescript
     nx build electron
     npx electron-builder
 
-# PowerShell (Windows)
+------------------------------------------------------------------------
 
-Lancer en mode administrateur :
+## Exécuter PowerShell en mode Administrateur (Windows)
+
+Certaines opérations (symlinks, build Electron, accès système)
+nécessitent un terminal avec élévation de privilèges.
+
+1.  Appuyer sur **Win**\
+2.  Taper **powershell**\
+3.  Clic droit sur **Windows PowerShell**\
+4.  Sélectionner **Exécuter en tant qu'administrateur**
+
+Puis exécuter :
 
 ``` bash
 npx electron-builder
 ```
 
-# 🔧 Scripts Nx
+------------------------------------------------------------------------
+
+## 🔧 Scripts Nx
 
   Commande   Description
   ---------- ------------------
@@ -209,11 +290,11 @@ npx electron-builder
   nx test    Tests unitaires
   nx e2e     Tests end-to-end
 
-# 🏛️ Architecture
+## 🏛️ Architecture
 
 Angular (renderer) → Backend TS (API) → Electron main (CJS)
 
-# 👤 Auteur & Licence
+## 👤 Auteur & Licence
 
 Auteur : Danny --- https://www.ganatan.com\
 Licence : MIT
