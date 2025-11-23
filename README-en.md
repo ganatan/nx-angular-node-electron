@@ -8,9 +8,10 @@
 -   **Backend Node.js**: standalone REST API or launched by Electron
 -   **Electron**: desktop shell assembling frontend + backend
 -   **Nx monorepo**: three separate apps (frontend, backend, electron)
--   Build, tests, lint, e2e: independent and combinable
 -   **DDD Architecture**: isolated business contexts (libs **domain**,
     **application**, **infrastructure**, **contract**)
+- **Tooling**: ESLint for code quality, esbuild for Angular builds, Playwright for end-to-end testing  
+
 
 ---
 

@@ -8,9 +8,9 @@
 -   **Backend Node.js** : API REST seule ou lancée par Electron
 -   **Electron** : shell desktop qui assemble frontend + backend
 -   **Monorepo Nx** : trois apps séparées (frontend, backend, electron)
--   Build, tests, lint, e2e : indépendants et combinables
 -   **Architecture DDD** : contexts métier isolés (libs **domain**,
     **application**, **infrastructure**, **contract**)
+- **Tooling** : ESLint pour la qualité de code, esbuild pour le build Angular, Playwright pour les tests e2e      
 
 ---
 
