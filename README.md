@@ -4,11 +4,11 @@
 
 # Architecture du projet
 
-- Le **frontend Angular** peut fonctionner de manière autonome dans le navigateur ou être embarqué dans Electron.
-- Le **backend Node.js** peut être lancé seul en API REST ou intégré au runtime Electron.
-- Electron joue le rôle de **shell desktop** capable d’assembler frontend + backend en une application distribuable.
-- Le monorepo Nx structure clairement trois applications : **frontend**, **backend**, **electron**.
-- Build, tests, lint, e2e et packaging sont **indépendants** et peuvent être combinés selon les besoins.
+- **Frontend Angular** : autonome ou embarqué dans Electron  
+- **Backend Node.js** : API REST seule ou lancée par Electron  
+- **Electron** : shell desktop qui assemble frontend + backend  
+- **Monorepo Nx** : trois apps séparées (frontend, backend, electron)  
+- Build, tests, lint, e2e : indépendants et combinables  
 
 ------------------------------------------------------------------------
 
