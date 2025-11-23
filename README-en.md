@@ -2,7 +2,7 @@
 
 <img src="./ui/ganatan-about-github.png" align="right" width="140" height="140" alt="ganatan logo">
 
-## 🧬 Structure
+# Structure
 
     nx-angular-node-electron/
     ├── apps/
