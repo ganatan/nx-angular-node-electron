@@ -34,9 +34,6 @@ DEVTOOLS_ENABLED=false
 
 ### Signification
 
-  ---------------------------------------------------------------------------------------------------
-  Variable                                        Description
-  ----------------------------------------------- ---------------------------------------------------
   `FRONTEND_ENABLED=true`                         Electron charge Angular
                                                   (`dist/apps/frontend-angular/browser/index.html`)
 
