@@ -12,7 +12,11 @@
 -   **Architecture DDD** : contexts métier isolés (libs **domain**,
     **application**, **infrastructure**, **contract**)
 
-------------------------------------------------------------------------
+---
+
+**👉 English version available here** : [English](./README-en.md)
+
+---
 
 # 1. Installation
 

@@ -2,14 +2,15 @@
 
 <img src="./ui/ganatan-about-github.png" align="right" width="140" height="140" alt="ganatan logo">
 
-## Project Goals
+# Project Architecture
 
--   Frontend with Angular 20, Backend with Node.js (TypeScript), Desktop
-    app with Electron
--   Nx monorepo
--   Angular integration inside Electron
--   TypeScript backend exposing a REST API
--   Lint, unit tests, e2e tests, build, Electron packaging
+-   **Frontend Angular**: standalone or embedded inside Electron\
+-   **Backend Node.js**: standalone REST API or launched by Electron\
+-   **Electron**: desktop shell assembling frontend + backend\
+-   **Nx monorepo**: three separate apps (frontend, backend, electron)\
+-   Build, tests, lint, e2e: independent and combinable\
+-   **DDD Architecture**: isolated business contexts (libs **domain**,
+    **application**, **infrastructure**, **contract**)
 
 ---
 
@@ -27,40 +28,46 @@ npm install
 
 ------------------------------------------------------------------------
 
-# 2. Configuration (.env)
+# 2. Default Configuration (.env)
 
-    # FRONTEND
-    MODE=html        # angular | html
-    DEVTOOLS=false
+``` env
+FRONTEND_ENABLED=false
+BACKEND_ENABLED=false
+DEVTOOLS_ENABLED=false
+```
 
--   MODE=html → Electron loads the HTML mock
--   MODE=angular → Electron loads the Angular build
+### Meaning
+
+`FRONTEND_ENABLED=true` --- Electron loads Angular\
+(`dist/apps/frontend-angular/browser/index.html`)
+
+`FRONTEND_ENABLED=false` --- Electron loads the HTML mock\
+(`apps/electron/src/renderer/index.html`)
+
+`BACKEND_ENABLED=true` --- Electron launches the TypeScript backend\
+`DEVTOOLS_ENABLED=true` --- DevTools enabled
 
 ------------------------------------------------------------------------
 
-# 3. Test Electron alone (HTML mock frontend)
+# 3. Test Electron with HTML Mock
 
-Check `.env`:
-
-    MODE=html
-
-Run Electron:
+``` env
+FRONTEND_ENABLED=false
+BACKEND_ENABLED=false
+```
 
 ``` bash
 npm run start:electron
 ```
 
-Electron starts with the HTML mock frontend.
-
 ------------------------------------------------------------------------
 
-# 4. Test Angular alone (browser)
+# 4. Test Angular in Browser
 
-Set `.env`:
-
-    MODE=angular
-
-Start Angular:
+``` env
+FRONTEND_ENABLED=true
+BACKEND_ENABLED=false
+```
 
 ``` bash
 npm run start:frontend
@@ -72,27 +79,30 @@ Open:
 
 ------------------------------------------------------------------------
 
-# 5. Build Angular frontend for Electron
+# 5. Build Angular for Electron
 
 ``` bash
 npm run build:frontend
 ```
 
-The Angular build is generated in `dist/frontend-angular/`.
+Generated in:
 
-Test inside Electron:
+    dist/apps/frontend-angular/browser/
+
+Test:
 
 ``` bash
 npm run start:electron
 ```
 
-Electron now loads Angular locally.
-
 ------------------------------------------------------------------------
 
-# 6. Test the Node/TypeScript backend
+# 6. Test the Backend
 
-Start the backend:
+``` env
+FRONTEND_ENABLED=true
+BACKEND_ENABLED=true
+```
 
 ``` bash
 npm run start:backend
@@ -105,25 +115,16 @@ Endpoints:
 
 ------------------------------------------------------------------------
 
-# 7. Test Angular + Backend (development mode)
-
-Backend:
+# 7. Test Angular + Backend (dev mode)
 
 ``` bash
 npm run start:backend
-```
-
-Frontend:
-
-``` bash
 npm run start:frontend
 ```
 
-Angular (4200) consumes the backend API (3000).
-
 ------------------------------------------------------------------------
 
-# 8. Build the backend
+# 8. Build Backend
 
 ``` bash
 npm run build:backend
@@ -131,156 +132,102 @@ npm run build:backend
 
 Output:
 
-    dist/backend-typescript/
+    dist/apps/backend-typescript/
 
 ------------------------------------------------------------------------
 
-# 9. Final build: Electron packaging
-
-Build frontend:
+# 9. Final Build: Electron Packaging
 
 ``` bash
 npm run build:frontend
-```
-
-Build backend:
-
-``` bash
 npm run build:backend
-```
-
-Build Electron:
-
-``` bash
 npm run build:electron
 ```
 
-Generated executable:
+Executable:
 
-    dist/electron/win-unpacked/GanatanElectronApp.exe
-
-The app loads Angular inside Electron and connects to the backend on
-localhost:3000.
+    dist/apps/electron/win-unpacked/GanatanElectronApp.exe
 
 ------------------------------------------------------------------------
 
-# 10. Quick Summary
+## 🧱 Overview
 
-  -----------------------------------------------------------------------
-  Scenario                          Commands
-  --------------------------------- -------------------------------------
-  Electron + HTML mock              MODE=html → `npm run start:electron`
+-   Electron (CJS)\
+-   Angular 20\
+-   Node TypeScript API\
+-   Nx orchestration
 
-  Angular only                      MODE=angular →
-                                    `npm run start:frontend`
+## 🧬 Structure
 
-  Backend only                      `npm run start:backend`
+    nx-angular-node-electron/
+    ├── apps/
+    │   ├── backend-typescript/
+    │   ├── backend-typescript-e2e/
+    │   ├── electron/
+    │   ├── electron-e2e/
+    │   ├── frontend-angular/
+    │   └── frontend-angular-e2e/
+    ├── tools/scripts/
+    ├── mock/
+    └── README.md
 
-  Electron + Angular (build)        `npm run build:frontend` →
-                                    `npm run start:electron`
+## 🧩 Applications
 
-  Full packaged version             build front + build back +
-                                    `npm run build:electron`
-  -----------------------------------------------------------------------
-
-------------------------------------------------------------------------
-
-
-
-## Overview
-Monorepo combining:
-- Electron Desktop
-- Angular 20 Web UI
-- Node TypeScript backend
-- Nx executors and task pipeline
-
-## Structure
-```
-nx-angular-node-electron/
-├── apps/
-│   ├── frontend-angular/
-│   ├── backend-typescript/
-│   ├── electron/
-│   ├── frontend-angular-e2e/
-│   ├── backend-typescript-e2e/
-│   └── electron-e2e/
-├── tools/scripts/
-└── mock/
-```
-
-## Best Practices — design/
-```
-apps/frontend-angular/design/
-```
-UI prototyping workspace:
-- HTML/CSS/JS prototypes
-- WebSocket tests
-- POC before Angular implementation
-- Faster workflow and clean codebase
-
-## Applications
 ### Angular
-```
-nx serve frontend-angular
-nx test frontend-angular
-nx e2e frontend-angular-e2e
-```
 
-### Node Backend
-```
-nx serve backend-typescript
-nx test backend-typescript
-nx e2e backend-typescript-e2e
-```
+    nx serve frontend-angular
+    nx test frontend-angular
+    nx e2e frontend-angular-e2e
 
-### Electron (CJS)
-```
-nx serve electron
-```
+### Backend
 
-## Development
-Run all apps:
-```
-nx run-many -t serve -p frontend-angular backend-typescript electron
-```
+    nx serve backend-typescript
+    nx test backend-typescript
+    nx e2e backend-typescript-e2e
 
-## Build & Packaging
-```
-nx build frontend-angular
-nx build backend-typescript
-nx build electron
+### Electron
+
+    nx serve electron
+
+## 🏗️ Build & Packaging
+
+    nx build frontend-angular
+    nx build backend-typescript
+    nx build electron
+    npx electron-builder
+
+------------------------------------------------------------------------
+
+## Windows PowerShell (Admin)
+
+1.  Press **Win**\
+2.  Type **powershell**\
+3.  Right‑click → Run as Administrator
+
+Then:
+
+``` bash
 npx electron-builder
 ```
 
-## Running PowerShell as Administrator (Windows)
-
-Some operations (symlinks, Electron build, system-level access) require an elevated terminal.  
-To open PowerShell with administrator privileges:
-
-1. Press **Win**
-2. Type **powershell**
-3. Right-click **Windows PowerShell**
-4. Select **Run as administrator**
-
-Then run:
-
-```bash
-npx electron-builder
-```
-
----
+------------------------------------------------------------------------
 
 ## Nx Commands
-| Command | Description |
-|--------|-------------|
-| nx serve | start app |
-| nx build | build app |
-| nx test | unit tests |
-| nx e2e | end-to-end tests |
+
+  Command    Description
+  ---------- ------------------
+  nx serve   Start app
+  nx build   Build app
+  nx test    Unit tests
+  nx e2e     End‑to‑end tests
+
+------------------------------------------------------------------------
 
 ## Architecture
+
 Angular Renderer → Node TS API → Electron Main (CJS)
 
 ## Author
-Danny — https://www.ganatan.com  
+
+Danny --- https://www.ganatan.com\
 MIT License
