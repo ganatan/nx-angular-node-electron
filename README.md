@@ -153,6 +153,12 @@ Build généré dans :
 
     dist/apps/backend-typescript/
 
+Tester dans Electron :
+
+``` bash
+npm run start:electron
+```
+
 ------------------------------------------------------------------------
 
 # 9. Build final : Packaging Electron
