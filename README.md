@@ -106,6 +106,13 @@ npm run start:electron
 
 # 6. Tester le backend Node/TypeScript
 
+Placer :
+
+``` env
+FRONTEND_ENABLED=true
+BACKEND_ENABLED=true
+```
+
 ``` bash
 npm run start:backend
 ```
