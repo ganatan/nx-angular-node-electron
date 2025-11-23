@@ -1,7 +1,24 @@
 # Nx Angular - Node - Electron Starter
 
 <img src="./ui/ganatan-about-github.png" align="right" width="140" height="140" alt="ganatan logo">
+    
+# Architecture du projet
 
+-   **Frontend Angular** : autonome ou embarqué dans Electron
+-   **Backend Node.js** : API REST seule ou lancée par Electron
+-   **Electron** : shell desktop qui assemble frontend + backend
+-   **Monorepo Nx** : trois apps séparées (frontend, backend, electron)
+-   **Architecture DDD** : contexts métier isolés (libs **domain**,
+    **application**, **infrastructure**, **contract**)
+- **Tooling** : ESLint pour la qualité de code, esbuild pour le build Angular, Playwright pour les tests e2e
+- **Scripts** : `generate:structure` (via ts-node) pour générer automatiquement l’arborescence du projet  
+
+
+---
+
+**👉 English version available here** : [English](./README-en.md)
+
+---
 
 # Structure
 
@@ -29,22 +46,6 @@
     │   └── scripts/
     │       └── generate-project-structure.ts
     └── README.md
-    
-# Architecture du projet
-
--   **Frontend Angular** : autonome ou embarqué dans Electron
--   **Backend Node.js** : API REST seule ou lancée par Electron
--   **Electron** : shell desktop qui assemble frontend + backend
--   **Monorepo Nx** : trois apps séparées (frontend, backend, electron)
--   **Architecture DDD** : contexts métier isolés (libs **domain**,
-    **application**, **infrastructure**, **contract**)
-- **Tooling** : ESLint pour la qualité de code, esbuild pour le build Angular, Playwright pour les tests e2e
-- **Scripts** : `generate:structure` (via ts-node) pour générer automatiquement l’arborescence du projet  
-
-
----
-
-**👉 English version available here** : [English](./README-en.md)
 
 ---
 
