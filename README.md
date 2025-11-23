@@ -54,7 +54,7 @@ Electron démarre avec le frontend HTML.
 
 ------------------------------------------------------------------------
 
-# 4. Tester Angular seul (navigateur)
+# 4. Tester Frontend Angular seul (navigateur)
 
 Mettre dans `.env` :
 
