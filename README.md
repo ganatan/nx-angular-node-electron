@@ -45,7 +45,6 @@ DEVTOOLS_ENABLED=false
 
   `DEVTOOLS_ENABLED=true`                 DevTools ouverts (uniquement en
                                           `NODE_ENV=development`)
-  -------------------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------
 
