@@ -1,4 +1,4 @@
-# Nx Angular -- Node -- Electron Starter
+# Nx Angular - Node - Electron Starter
 
 <img src="./ui/ganatan-about-github.png" align="right" width="140" height="140" alt="ganatan logo">
 
@@ -22,18 +22,16 @@ npm install
 
 ------------------------------------------------------------------------
 
-# 2. Configuration (.env)
+# 2. Fichier de Configuration (.env) par défaut
 
 ``` env
-FRONTEND_ENABLED=true
-BACKEND_ENABLED=true
+FRONTEND_ENABLED=false
+BACKEND_ENABLED=false
 DEVTOOLS_ENABLED=false
 ```
 
 ### Signification
 
-  -------------------------------------------------------------------------------------------
-  Variable                                Effet
   --------------------------------------- ---------------------------------------------------
   `FRONTEND_ENABLED=true`                 Electron charge Angular
                                           (`dist/apps/frontend-angular/browser/index.html`)
