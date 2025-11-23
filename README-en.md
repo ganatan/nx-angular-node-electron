@@ -2,6 +2,33 @@
 
 <img src="./ui/ganatan-about-github.png" align="right" width="140" height="140" alt="ganatan logo">
 
+## 🧬 Structure
+
+    nx-angular-node-electron/
+    ├── apps/
+    │   ├── backend-typescript/
+    │   ├── backend-typescript-e2e/
+    │   ├── electron/
+    │   ├── electron-e2e/
+    │   ├── frontend-angular/
+    │   └── frontend-angular-e2e/
+    ├── libs/
+    │   └── contexts/
+    │       ├── catalog/
+    │       │   ├── application/
+    │       │   ├── contract/
+    │       │   ├── domain/
+    │       │   └── infrastructure/
+    │       └── inventory/
+    │           ├── application/
+    │           ├── contract/
+    │           ├── domain/
+    │           └── infrastructure/
+    ├── tools/
+    │   └── scripts/
+    │       └── generate-project-structure.ts
+    └── README.md
+
 # Project Architecture
 
 -   **Frontend Angular**: standalone or embedded inside Electron
@@ -159,33 +186,6 @@ Executable:
 -   Angular 20\
 -   Node TypeScript API\
 -   Nx orchestration
-
-## 🧬 Structure
-
-    nx-angular-node-electron/
-    ├── apps/
-    │   ├── backend-typescript/
-    │   ├── backend-typescript-e2e/
-    │   ├── electron/
-    │   ├── electron-e2e/
-    │   ├── frontend-angular/
-    │   └── frontend-angular-e2e/
-    ├── libs/
-    │   └── contexts/
-    │       ├── catalog/
-    │       │   ├── application/
-    │       │   ├── contract/
-    │       │   ├── domain/
-    │       │   └── infrastructure/
-    │       └── inventory/
-    │           ├── application/
-    │           ├── contract/
-    │           ├── domain/
-    │           └── infrastructure/
-    ├── tools/
-    │   └── scripts/
-    │       └── generate-project-structure.ts
-    └── README.md
 
 ## 🧩 Applications
 
