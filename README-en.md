@@ -175,25 +175,46 @@ Executable:
 
 ### Angular
 
+Serve :
+
     nx serve frontend-angular
+
+Tests :
+
     nx test frontend-angular
+
+  # ⚠️ Playwright e2e prerequisite
+    # Playwright requires installed browsers (Chromium/Firefox/WebKit)
+    # Run this once before the first test:
+    #     npx playwright install
+    # or lighter:
+    #     npx playwright install chromium
+
     nx e2e frontend-angular-e2e
 
-### Backend
+
+### Backend --- Node TypeScript
+
+Serve :
 
     nx serve backend-typescript
+
+Tests :
+
     nx test backend-typescript
     nx e2e backend-typescript-e2e
 
-### Electron
+### Electron --- Process Main CJS
 
-    nx serve electron
+Serve :
+
+    npx electron apps/electron/src/main.js
+
 
 ## 🏗️ Build & Packaging
 
     nx build frontend-angular
     nx build backend-typescript
-    nx build electron
     npx electron-builder
 
 ------------------------------------------------------------------------

@@ -35,7 +35,6 @@ app.get('/', (req: Request, res: Response) => {
   res.json({
     name: 'angular-node-electron-backend',
     version: '1.0.0',
-    date: '2025-11-22 15-08',
     status: 'running',
     endpoints: {
       titles: '/api/catalog/titles',

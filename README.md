@@ -253,13 +253,12 @@ Tests :
 
 Serve :
 
-    nx serve electron
+    npx electron apps/electron/src/main.js
 
 ## 🏗️ Build & Packaging
 
     nx build frontend-angular
     nx build backend-typescript
-    nx build electron
     npx electron-builder
 
 ------------------------------------------------------------------------
