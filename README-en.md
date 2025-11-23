@@ -231,23 +231,6 @@ Then:
 npx electron-builder
 ```
 
-------------------------------------------------------------------------
-
-## Nx Commands
-
-  Command    Description
-  ---------- ------------------
-  nx serve   Start app
-  nx build   Build app
-  nx test    Unit tests
-  nx e2e     End‑to‑end tests
-
-------------------------------------------------------------------------
-
-## Architecture
-
-Angular Renderer → Node TS API → Electron Main (CJS)
-
 ## Author
 
 Danny --- https://www.ganatan.com\

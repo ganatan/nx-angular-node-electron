@@ -281,19 +281,6 @@ npx electron-builder
 
 ------------------------------------------------------------------------
 
-## 🔧 Scripts Nx
-
-  Commande   Description
-  ---------- ------------------
-  nx serve   Démarrer une app
-  nx build   Compiler
-  nx test    Tests unitaires
-  nx e2e     Tests end-to-end
-
-## 🏛️ Architecture
-
-Angular (renderer) → Backend TS (API) → Electron main (CJS)
-
 ## 👤 Auteur & Licence
 
 Auteur : Danny --- https://www.ganatan.com\
