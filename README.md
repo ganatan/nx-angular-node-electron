@@ -9,7 +9,7 @@
 - **Electron** : shell desktop qui assemble frontend + backend  
 - **Monorepo Nx** : trois apps séparées (frontend, backend, electron)  
 - Build, tests, lint, e2e : indépendants et combinables  
-- Architecture DDD : contexts métier isolés (libs **context**, **application**, **infrastructure**, **contract**)  
+- **Architecture DDD** : contexts métier isolés (libs **context**, **application**, **infrastructure**, **contract**)  
 
 ------------------------------------------------------------------------
 
