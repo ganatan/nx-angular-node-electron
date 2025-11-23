@@ -1,21 +1,16 @@
-# Nx Angular - Node - Electron Starter
+# Nx Angular -- Node -- Electron Starter
 
 <img src="./ui/ganatan-about-github.png" align="right" width="140" height="140" alt="ganatan logo">
 
-
 ## Objectifs du projet
 
--   Frontend Angular 20, Backend Node.js (TypeScript) et Desktop Electron
--   Monorepo Nx 
--   Intégration Angular → Electron
--   Backend TypeScript servant une API REST
--   Lint, tests unitaires, e2e, build, packaging Electron
+-   Frontend Angular 20 intégré dans une app Desktop Electron
+-   Backend Node.js (TypeScript) exposant une API REST
+-   Monorepo Nx
+-   Build Angular + Backend + Electron
+-   Tests, lint, e2e, packaging final
 
----
-
-**👉 English version available here** : [English](./README-en.md)
-
----
+------------------------------------------------------------------------
 
 # 1. Installation
 
@@ -29,36 +24,58 @@ npm install
 
 # 2. Configuration (.env)
 
-    # FRONTEND
-    MODE=html        # angular | html
-    DEVTOOLS=false
+``` env
+FRONTEND_ENABLED=true
+BACKEND_ENABLED=true
+DEVTOOLS_ENABLED=false
+```
 
--   MODE=html → Electron charge le mock HTML
--   MODE=angular → Electron charge le build Angular
+### Signification
+
+  -------------------------------------------------------------------------------------------
+  Variable                                Effet
+  --------------------------------------- ---------------------------------------------------
+  `FRONTEND_ENABLED=true`                 Electron charge Angular
+                                          (`dist/apps/frontend-angular/browser/index.html`)
+
+  `FRONTEND_ENABLED=false`                Electron charge le mock HTML
+                                          (`apps/electron/src/renderer/index.html`)
+
+  `BACKEND_ENABLED=true`                  Electron lance le backend TypeScript
+
+  `DEVTOOLS_ENABLED=true`                 DevTools ouverts (uniquement en
+                                          `NODE_ENV=development`)
+  -------------------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------
 
-# 3. Tester Electron seul (frontend HTML mock)
+# 3. Tester Electron en mode HTML mock
 
-Vérifier dans `.env` :
+Placer :
 
-    MODE=html
+``` env
+FRONTEND_ENABLED=false
+BACKEND_ENABLED=false
+```
 
-Lancer Electron :
+Lancer :
 
 ``` bash
 npm run start:electron
 ```
 
-Electron démarre avec le frontend HTML.
+Electron démarre avec le mock HTML.
 
 ------------------------------------------------------------------------
 
-# 4. Tester Frontend Angular seul (navigateur)
+# 4. Tester le frontend Angular (navigateur)
 
-Mettre dans `.env` :
+Placer :
 
-    MODE=angular
+``` env
+FRONTEND_ENABLED=true
+BACKEND_ENABLED=false
+```
 
 Démarrer Angular :
 
@@ -78,7 +95,9 @@ Ouvrir :
 npm run build:frontend
 ```
 
--   Le build Angular est généré dans `dist/frontend-angular/`.
+Le build est généré dans :
+
+    dist/apps/frontend-angular/browser/
 
 Tester dans Electron :
 
@@ -86,19 +105,15 @@ Tester dans Electron :
 npm run start:electron
 ```
 
-Electron charge maintenant Angular en local.
-
 ------------------------------------------------------------------------
 
 # 6. Tester le backend Node/TypeScript
-
-Démarrer le backend :
 
 ``` bash
 npm run start:backend
 ```
 
-Endpoints accessibles :
+Endpoints :
 
     http://localhost:3000/api/catalog/titles
     http://localhost:3000/api/inventory/items
@@ -113,13 +128,13 @@ Backend :
 npm run start:backend
 ```
 
-Frontend Angular :
+Frontend :
 
 ``` bash
 npm run start:frontend
 ```
 
-Angular (4200) consomme l'API backend (3000).
+Angular appelle l'API backend en local.
 
 ------------------------------------------------------------------------
 
@@ -131,19 +146,19 @@ npm run build:backend
 
 Build généré dans :
 
-    dist/backend-typescript/
+    dist/apps/backend-typescript/
 
 ------------------------------------------------------------------------
 
 # 9. Build final : Packaging Electron
 
-Builder le frontend :
+Builder Angular :
 
 ``` bash
 npm run build:frontend
 ```
 
-Builder le backend :
+Builder backend :
 
 ``` bash
 npm run build:backend
@@ -155,32 +170,13 @@ Builder Electron :
 npm run build:electron
 ```
 
-Le binaire est généré dans :
+Exécutable généré :
 
-    dist/electron/win-unpacked/GanatanElectronApp.exe
+    dist/apps/electron/win-unpacked/GanatanElectronApp.exe
 
-Lancement : l'app charge Angular dans Electron et appelle l'API backend
-sur localhost:3000.
+L'application charge Angular dans Electron et utilise l'API backend
+locale.
 
-------------------------------------------------------------------------
-
-# 10. Résumé rapide
-
-  -----------------------------------------------------------------------
-  Scénario                        Commandes
-  ------------------------------- ---------------------------------------
-  Electron + HTML mock            MODE=html → `npm run start:electron`
-
-  Angular seul                    MODE=angular → `npm run start:frontend`
-
-  Backend seul                    `npm run start:backend`
-
-  Electron + Angular (build)      `npm run build:frontend` →
-                                  `npm run start:electron`
-
-  Version finale packagée         build front + build back +
-                                  `npm run build:electron`
-  -----------------------------------------------------------------------
 
 ------------------------------------------------------------------------
 
