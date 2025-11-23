@@ -4,11 +4,11 @@
 
 # Architecture du projet
 
--   **Frontend Angular** : autonome ou embarqué dans Electron\
--   **Backend Node.js** : API REST seule ou lancée par Electron\
--   **Electron** : shell desktop qui assemble frontend + backend\
--   **Monorepo Nx** : trois apps séparées (frontend, backend, electron)\
--   Build, tests, lint, e2e : indépendants et combinables\
+-   **Frontend Angular** : autonome ou embarqué dans Electron
+-   **Backend Node.js** : API REST seule ou lancée par Electron
+-   **Electron** : shell desktop qui assemble frontend + backend
+-   **Monorepo Nx** : trois apps séparées (frontend, backend, electron)
+-   Build, tests, lint, e2e : indépendants et combinables
 -   **Architecture DDD** : contexts métier isolés (libs **domain**,
     **application**, **infrastructure**, **contract**)
 
@@ -227,6 +227,15 @@ Serve :
 Tests :
 
     nx test frontend-angular
+
+ # ⚠️ Prérequis e2e Playwright
+    # Playwright nécessite l’installation des navigateurs (Chromium/Firefox/WebKit)
+    # Faites ceci une seule fois avant le premier test :
+    #     npx playwright install
+    # ou plus léger :
+    #     npx playwright install chromium
+
+
     nx e2e frontend-angular-e2e
 
 ### Backend --- Node TypeScript
