@@ -176,7 +176,17 @@ Executable:
 
 ## 🧩 Applications
 
-### Angular
+
+### Generate the project structure
+
+This script automatically generates the Nx workspace tree.
+
+```bash
+npm run generate:structure
+```
+
+
+### Frontend --- Angular 20
 
 Serve :
 
