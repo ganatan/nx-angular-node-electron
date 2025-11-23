@@ -281,7 +281,10 @@ npx electron-builder
 
 ------------------------------------------------------------------------
 
-## 👤 Auteur & Licence
+---
 
-Auteur : Danny --- https://www.ganatan.com\
-Licence : MIT
+## 👤 Auteur
+
+- **Danny** – [www.ganatan.com](https://www.ganatan.com)
+
+---

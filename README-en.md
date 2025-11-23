@@ -231,7 +231,10 @@ Then:
 npx electron-builder
 ```
 
-## Author
+---
 
-Danny --- https://www.ganatan.com\
-MIT License
+## 👤 Author
+
+- **Danny** – [www.ganatan.com](https://www.ganatan.com)
+
+---
